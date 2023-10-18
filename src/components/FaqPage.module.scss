@@ -1,0 +1,52 @@
+@use "../styles" as *;
+
+.faq {
+  @include pageArea();
+  background-color: $whiteBackground;
+
+  &__titleBlock {
+    @include standartBlock();
+    gap: 0.2rem;
+
+    &__subTitle {
+      @include areaSubTitle();
+    }
+
+    &__title {
+      @include areaTitle();
+    }
+  }
+
+  &__questions {
+    position: relative;
+    display: grid;
+    grid-gap: 3rem;
+    //grid-auto-rows: 20vw;
+    grid-template-columns: repeat(2, minmax(50px, 1fr));
+    grid-auto-flow: dense;
+    box-sizing: border-box;
+    padding: 2rem 0;
+
+    @media screen and (max-device-width: $mobile){
+      grid-template-columns: repeat(1, minmax(50px, 1fr));
+    }
+
+    &__item {
+      @include standartBlock($width:auto);
+      gap: 1.2rem;
+
+      &__title {
+        width: 100%;
+        font-size: 1.43rem;
+        font-weight: 500;
+        color: $titleColor;
+        text-align: left;
+      }
+
+      p {
+        @include regularText();
+        font-weight: 300;
+      }
+    }
+  }
+}

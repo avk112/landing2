@@ -1,0 +1,24 @@
+@use "../styles" as *;
+
+.hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  z-index: 100;
+
+  align-items: center;
+  justify-content: center;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #998a9b;
+    opacity: 0.5;
+  }
+}

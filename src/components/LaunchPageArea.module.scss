@@ -1,0 +1,30 @@
+@use "../styles" as *;
+
+.launch {
+  @include pageArea($direction: row);
+  background-color: inherit;
+
+  @media screen and (max-device-width: $tablet){
+    flex-direction: column-reverse;
+  }
+
+  &__background {
+    position: relative;
+    display: flex;
+    width: 45%;
+
+    @media screen and (max-device-width: $tablet){
+      width: 60%;
+    }
+
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &__smallImg {
+      filter: blur(2em);
+    }
+  }
+}

@@ -1,0 +1,164 @@
+@use "../styles" as *;
+
+.screenshots{
+  @include pageArea();
+
+  @media screen and (max-device-width: $tablet){
+    padding: 6rem 0.5rem 4rem 0.5rem;
+  }
+
+  @media screen and (max-device-width: $tablet){
+    padding: 5rem 0.5rem 4rem 0.5rem;
+  }
+
+  &__titleBlock {
+    @include standartBlock();
+    gap: 0.2rem;
+
+    &__subTitle {
+      @include areaSubTitle();
+    }
+
+    &__title {
+      @include areaTitle();
+    }
+  }
+
+  &__slider {
+    @include standartBlock();
+    overflow: hidden;
+
+    &__leftBtn, &__rightBtn  {
+      position: absolute;
+      top: 50%;
+      width: 3%;
+      z-index: 11;
+      transform: translate(0, -50%);
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: none;
+      cursor: pointer;
+
+      @media screen and (max-device-width: $tablet){
+        display: none;
+      }
+
+      img{
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__leftBtn {
+      left: 0.5%;
+    }
+
+    &__rightBtn {
+      right:0.5%;
+    }
+
+    &__stripe {
+      @include standartBlock($direction: row);
+      padding: 30% 0 33% 0;
+      z-index: 10;
+      cursor: grab;
+
+      &:active{
+        cursor: grabbing;
+      }
+
+      &::before {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        z-index: 8;
+      }
+
+      &__imgBlock {
+        position: absolute;
+        display: flex;
+        width: 26.5%;
+        z-index: 5;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+          z-index: 1;
+        }
+      }
+    }
+
+    &__switchers {
+      @include standartBlock($direction: row, $justify: center);
+      gap: 1.6rem;
+
+      &__item {
+        width: 2.5rem;
+        height: 0.8rem;
+        border: none;
+        border-radius: 5px;
+        background: $unActiveSlider;
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        @media screen and (max-device-width: $mobile){
+          width: 2rem;
+          height: 0.6rem;
+        }
+
+        &:hover {
+          background: $mainColor;
+        }
+      }
+
+      &__itemActive {
+        background: $mainColor;
+      }
+
+    }
+  }
+}
+
+.centralSlide {
+  transform: scale(1.2);
+}
+
+.scaledSlide {
+  transform: scale(1.2);
+  animation: scaleSlide 0.2s linear;
+}
+
+.descaledSlide {
+  transform: scale(1);
+  animation: descaleSlide 0.2s linear;
+}
+
+.moveLeft, .moveRight {
+  transition: left 0.5s linear;
+}
+
+
+@keyframes scaleSlide {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes descaleSlide {
+  0% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

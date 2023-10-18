@@ -1,0 +1,137 @@
+@use "../styles" as *;
+
+.doMore {
+  @include pageArea();
+
+  &__titleBlock {
+    @include standartBlock();
+    gap: 0.2em;
+
+    &__subTitle {
+      @include areaSubTitle();
+    }
+
+    &__title {
+      @include areaTitle();
+    }
+  }
+
+  &__table {
+    @include standartBlock();
+
+    &__headers {
+      @include standartBlock($direction: row);
+
+      &__item {
+        @include standartBlock($width: 24.8%);
+        background: #f5eff7;
+        font-size: 1.35rem;
+        color: $unActiveTitle;
+        padding: 1.05em 0;
+        cursor: pointer;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-top: 3px solid #f5eff7;
+        border-bottom: 1px solid $greyArea;
+
+        @media screen and (max-device-width: $tablet){
+          font-size: 1rem;
+          font-weight: 500;
+        }
+
+        @media screen and (max-device-width: $tablet){
+          font-size: 0.8rem;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 1px;
+          background: $whiteBackground;
+        }
+      }
+
+      &__itemActive {
+        color: $titleColor;
+        border-top: 3px solid #ce75b4;
+        border-bottom: 1px solid $whiteBackground;
+        background: $whiteBackground;
+        transition: all 0.2s linear;
+      }
+    }
+
+    &__body {
+      @include standartBlock($direction: row, $align: flex-start);
+      padding: 3.5rem;
+      background: $whiteBackground;
+
+      @media screen and (max-device-width: $tablet){
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      &__info {
+        @include standartBlock($width: 75%, $align: left);
+        gap: 2em;
+        text-align: justify;
+
+        @media screen and (max-device-width: $tablet){
+          width: 100%;
+        }
+
+        &__title {
+          @include bigAreaTitle();
+        }
+
+        &__subTitle {
+          @include bigAreaSubTitle();
+        }
+
+        p {
+          @include regularText();
+          text-indent: 2em;
+        }
+      }
+
+      &__imgBlock {
+        position: relative;
+        display: flex;
+        width: 20%;
+
+        @media screen and (max-device-width: $tablet){
+          width: 100%;
+        }
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &__bodyReverse {
+      flex-direction: row-reverse;
+
+      @media screen and (max-device-width: $tablet){
+        flex-direction: column-reverse;
+      }
+    }
+  }
+}
+
+.appear {
+   animation: appearance 0.2s linear;
+ }
+
+@keyframes appearance {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

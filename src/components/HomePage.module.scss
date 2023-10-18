@@ -1,0 +1,67 @@
+@use '../styles' as *;
+
+.home {
+  @include standartBlock($justify: center);
+
+
+  &__topBlock {
+    @include standartBlock($justify: center);
+    padding: 10.5rem 0 0 0;
+    gap: 1.85rem;
+    background: linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+
+    h1 {
+      font-size: 4.28rem;
+      font-weight: 300;
+      color: rgb(255, 255, 255);
+      letter-spacing: -1px;
+      text-align: center;
+
+      @media screen and (max-device-width: $mobile){
+        font-size: 3.5rem;
+      }
+    }
+
+    p {
+      width: 60%;
+      font-size: 1.65rem;
+      font-weight: 300;
+      line-height: 2.48rem;
+      color: #ffb8f6;
+      text-align: center;
+
+      @media screen and (max-device-width: $tablet){
+        width: 80%;
+      }
+    }
+
+    &__imgBlock {
+      position: relative;
+      display: flex;
+      width: 37%;
+
+      @media screen and (max-device-width: $tablet){
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__clientsLogos {
+    @include standartBlock();
+    padding: 3.6rem 17rem;
+
+    @media screen and (max-device-width: $tablet){
+      padding: 2rem 3rem;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

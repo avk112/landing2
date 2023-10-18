@@ -1,0 +1,123 @@
+@use "../styles" as *;
+
+.upgrade{
+  @include pageArea();
+  background-color: $whiteBackground;
+
+  &__titleBlock {
+    @include standartBlock();
+    gap: 0.2rem;
+
+    &__subTitle {
+      @include areaSubTitle();
+    }
+
+    &__title {
+      @include areaTitle();
+    }
+  }
+
+&__plans {
+  @include standartBlock($direction: row);
+
+  @media screen and (max-device-width: $tablet){
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  &__item {
+    @include standartBlock();
+    width: 31.3%;
+    border: 1px solid $cardBorderColor;
+    border-radius: 5px;
+    padding: 3.4rem 2rem 2rem;
+    cursor: pointer;
+
+    @media screen and (max-device-width: $tablet){
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: $bigSubTitleColor;
+      text-transform: uppercase;
+    }
+
+    &__price {
+      font-size: 3.2rem;
+      line-height: 1.7em;
+      font-weight: 300;
+      color: $titleColor;
+
+      sub {
+        position: relative;
+        bottom: 0;
+        font-size: 55%;
+        vertical-align: baseline;
+      }
+    }
+
+    ul {
+      @include regularText();
+      color: $cardTextColor;
+      text-transform: capitalize;
+      text-align: center;
+      line-height: 3.58em;
+
+      @media screen and (max-device-width: $tablet){
+        width: 100%;
+        column-count: 2;
+      }
+    }
+
+    button {
+      position: relative;
+      width: 100%;
+      font-size: 1.14rem;
+      font-weight: 500;
+      color: $whiteBackground;
+      text-transform: uppercase;
+      background: linear-gradient( 122deg, #e54595 0%, #fd378e 100%);
+      box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.2);
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      padding: 1em;
+      margin: 1.5em 0 0 0;
+      transition: all 0.3s linear;
+
+      &:hover {
+        background: linear-gradient( 122deg, #fd378e 0%, #e54595 100%);
+        box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.3);
+      }
+
+      &:disabled {
+        background: linear-gradient( 122deg, #e1cfd7 0%, #d7c1cd 100%);
+        cursor: auto;
+      }
+
+    }
+
+  }
+}
+}
+
+.clicked {
+  position: relative;
+  box-shadow: 0px 12px 59px 0px rgba(36, 7, 31, 0.11);
+  overflow: hidden;
+  border: none;
+  transition: all 0.3s linear;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: $cardTopBorderColor;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+}

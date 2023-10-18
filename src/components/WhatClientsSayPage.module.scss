@@ -1,0 +1,111 @@
+@use "../styles" as *;
+
+.client {
+  @include pageArea();
+  background: $whiteBackground;
+
+  &__titleBlock {
+    @include standartBlock();
+    gap: 0.2rem;
+
+    &__subTitle {
+      @include areaSubTitle();
+    }
+
+    &__title {
+      @include areaTitle();
+    }
+  }
+
+  &__slider {
+    @include standartBlock($direction: row);
+
+    &__arrow {
+      position: relative;
+      display: flex;
+      width: 3%;
+      border: none;
+      background: none;
+      cursor: pointer;
+
+      @media screen and (max-device-width: $tablet){
+        width: 2rem;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__central {
+      @include standartBlock($width: 94%, $align: flex-start);
+      overflow: hidden;
+      cursor: pointer;
+
+      &__stripe {
+        @include standartBlock($direction: row, $width: 300%);
+        position: inherit;
+        left: 0;
+        transition: left 0.3s linear;
+
+        &__item {
+          @include standartBlock();
+          padding: 2rem 5.5rem;
+          gap: 2rem;
+
+          @media screen and (max-device-width: $tablet){
+            padding: 2rem 2rem;
+          }
+
+          @media screen and (max-device-width: $mobile){
+            padding: 0 2rem 2rem;
+          }
+
+          &__imgBlock {
+            position: relative;
+            display: flex;
+            width: 12.4%;
+            border-radius: 50%;
+            box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.07);
+
+            @media screen and (max-device-width: $tablet){
+              width: 10rem;
+            }
+
+            img {
+              width: 100%;
+              object-fit: cover;
+              border-radius: 50%;
+            }
+          }
+
+          &__quote {
+            font-size: 1.44rem;
+            font-weight: 300;
+            text-align: center;
+            color: $subTitleColor;
+            line-height: 1.5em;
+          }
+
+          &__titleBlock {
+            @include standartBlock();
+            gap: 0.7rem;
+
+            &__title {
+              font-size: 2rem;
+              font-weight: 300;
+              color: $titleColor;
+            }
+
+            &__subTitle {
+              font-size: 1.15rem;
+              font-weight: 400;
+              color: $bigSubTitleColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

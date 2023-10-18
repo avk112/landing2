@@ -1,0 +1,61 @@
+@use "../styles" as *;
+
+.universalInfo {
+  @include standartBlock($width: 49%, $align: flex-start);
+  gap: 2rem;
+  z-index: 10;
+
+  @media screen and (max-device-width: $tablet){
+    width: 100%;
+  }
+
+  &__imgBlock {
+    display: flex;
+    position: relative;
+    width: 13%;
+    box-sizing: border-box;
+    padding: 0.8rem;
+    border-radius: 3px;
+    box-shadow: 0px 0px 43px 0px rgba(0, 0, 0, 0.14);
+
+    @media screen and (max-device-width: $tablet){
+      width: 5rem;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    @include bigAreaTitle();
+  }
+
+  p {
+    @include  regularText();
+  }
+
+  &__btn {
+    position: relative;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $whiteBackground;
+    background: linear-gradient( 122deg, #e54595 0%, #fd378e 100%);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 9px 32px 0px;
+    transition: all 0.3s linear;
+
+    &:hover {
+      background: linear-gradient( 122deg, #fd378e 0%, #e54595 100%);
+      box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    a{
+      display: flex;
+      padding: 1em 2.5em;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@use "../styles" as *;
+
+.discover {
+  @include pageArea($align: flex-end);
+  background-color: inherit;
+  padding-bottom: 45.45rem;
+
+  @media screen and (max-device-width: $tablet){
+    align-items: flex-start;
+    padding-bottom: 28rem;
+  }
+
+  &__background {
+    position: absolute;
+    width: 62.5%;
+    z-index: 1;
+    top: 21%;
+    left: 8.9%;
+
+    @media screen and (max-device-width: $tablet){
+      width: 30rem;
+      top: unset;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &__smallImg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      filter: blur(2rem);
+
+      @media screen and (max-device-width: $tablet){
+        top: unset;
+        bottom: 0;
+      }
+    }
+  }
+}

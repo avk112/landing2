@@ -1,0 +1,104 @@
+@use "../styles" as *;
+
+.download {
+  @include pageArea($justify: center);
+  gap: 0;
+  padding: 9.5rem 8.5rem;
+  background: linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+
+  &__imgBlock {
+    display: flex;
+    width: 5.5%;
+    background-color: $whiteBackground;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    box-shadow: 0px 0px 43px 0px rgba(0, 0, 0, 0.14);
+
+    @media screen and (max-device-width: $tablet){
+      width: 5rem;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: $whiteBackground;
+    text-transform: capitalize;
+    letter-spacing: -1px;
+    line-height: 2;
+    margin: 0.6em 0 0 0;
+  }
+
+  p {
+    width:58%;
+    font-size: 1.14rem;
+    font-weight: 300;
+    color: $downloadColor;
+    text-align: center;
+    line-height: 1.5;
+
+    @media screen and (max-device-width: $tablet){
+      width: 100%;
+    }
+  }
+
+  &__btnsBlock {
+    @include standartBlock($direction: row, $justify: center);
+    gap: 2rem;
+    margin: 2rem 0 3rem 0;
+
+    a {
+      display: flex;
+      position: relative;
+      width: 16%;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: $titleColor;
+      font-weight: 500;
+      text-transform: uppercase;
+      box-sizing: border-box;
+      border-radius: 5px;
+      padding: 1rem;
+      background-color: $whiteBackground;
+      box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.26);
+      transition: all 0.3s linear;
+
+      @media screen and (max-device-width: $tablet){
+        width: 25%;
+      }
+
+      @media screen and (max-device-width: $mobile){
+        width: 35%;
+      }
+
+      &:hover {
+        color: #111;
+        background-color: #e2e6ea;
+        border-color: #dae0e5;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(248,249,250,.5);
+      }
+
+      img {
+        width: 11%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  small {
+    font-size: 90%;
+    font-weight: 400;
+    color: $downloadColor;
+  }
+
+}

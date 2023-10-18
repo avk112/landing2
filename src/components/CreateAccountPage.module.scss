@@ -1,0 +1,101 @@
+@use "../styles" as *;
+
+.create {
+  @include pageArea($direction: row);
+  gap: unset;
+
+  &__list {
+    @include standartBlock($width: 65.65%, $justify: center);
+
+    @media screen and (max-device-width: $mobile){
+      width: 100%;
+    }
+
+    &__item {
+      @include standartBlock($direction: row);
+      padding: 2.8rem 0;
+
+      @media screen and (max-device-width: $notepad){
+        align-items: flex-start;
+      }
+
+
+
+      &:nth-child(2){
+        border-top: 1px solid #f8e3f0;
+        border-bottom: 1px solid #f8e3f0;
+      }
+
+      &:hover &__number {
+        background: linear-gradient( 122deg, #e6388e 0%, #fb378e 100%);
+        color: $whiteBackground;
+      }
+
+      &__number {
+        @include standartBlock($width:7.1rem, $justify: center);
+        height: 7.1rem;
+        background: $whiteBackground;
+        border-radius: 50%;
+        box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.09);
+        //padding: 1.53rem;
+        font-size: 3.4rem;
+        font-weight: 300;
+        color: $mainColor;
+        transition: all 0.3s linear;
+
+        @media screen and (max-device-width: $notepad){
+          width: 6.3rem;
+          height: 6.3rem;
+        }
+
+        @media screen and (max-device-width: $tablet){
+          width: 4rem;
+          height: 4rem;
+          font-size: 2rem;
+        }
+      }
+
+      &__info {
+        @include standartBlock($width: 80%, $align: flex-start);
+        gap: 1rem;
+
+        &__title {
+          font-size: 2rem;
+          font-weight: 300;
+          color: $titleColor;
+        }
+
+        p {
+          font-size: 1.15rem;
+          font-weight: 400;
+          line-height: 1.5em;
+          text-align: justify;
+          color: $subTitleColor;
+        }
+      }
+    }
+  }
+
+  &__imgBlock {
+    position: relative;
+    display: flex;
+    width: 31.5%;
+
+    @media screen and (max-device-width: $tablet){
+      width: 33%;
+    }
+
+    @media screen and (max-device-width: $mobile){
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &__small {
+      filter: blur(2em);
+    }
+  }
+}
