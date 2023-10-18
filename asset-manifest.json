@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/landing2/static/css/main.6665424a.css",
+    "main.js": "/landing2/static/js/main.ee7e791d.js",
+    "static/media/perspective.png": "/landing2/static/media/perspective.32bb0a2357a646af188a.png",
+    "static/media/dualphone.png": "/landing2/static/media/dualphone.17a217f8097b7444a4c0.png",
+    "static/media/iphonex-full.png": "/landing2/static/media/iphonex-full.fd2de5d4483f26b402ac.png",
+    "static/media/iphonex.png": "/landing2/static/media/iphonex.ee1962ed994b550eadf2.png",
+    "static/media/client1.png": "/landing2/static/media/client1.7a4aa2521047e13be238.png",
+    "static/media/client2.png": "/landing2/static/media/client2.a887d0621cce0e75b404.png",
+    "static/media/screen3.jpg": "/landing2/static/media/screen3.471b7f655f131f6ab4a9.jpg",
+    "static/media/screen1.jpg": "/landing2/static/media/screen1.d1dda49cbfba7f796d6a.jpg",
+    "static/media/screen2.jpg": "/landing2/static/media/screen2.411254644336f54da346.jpg",
+    "static/media/client.png": "/landing2/static/media/client.49de50f2a4f54c45a353.png",
+    "index.html": "/landing2/index.html",
+    "main.6665424a.css.map": "/landing2/static/css/main.6665424a.css.map",
+    "main.ee7e791d.js.map": "/landing2/static/js/main.ee7e791d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6665424a.css",
+    "static/js/main.ee7e791d.js"
+  ]
+}
