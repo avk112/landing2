@@ -26,7 +26,7 @@ const DiscoverPage = () => {
                 <img
                     src={background}
                     alt="iPhone X"
-                    loading="lazy"
+                    // loading="lazy"
                     onLoad={handleLoading}
                 />
                 <img

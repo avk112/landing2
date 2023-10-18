@@ -32,7 +32,7 @@ const CreateAccountPage = () => {
             <div className={classes.create__imgBlock}>
                 <img src={background}
                      alt="iPhone X"
-                     loading="lazy"
+                     // loading="lazy"
                      onLoad={handleLoading}
                      style={{display: !isLoaded ? "none" : "block"}}
                 />

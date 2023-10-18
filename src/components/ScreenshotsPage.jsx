@@ -194,7 +194,7 @@ const ScreenshotsPage = ({myRef=null}) => {
 
     const switchersBlock = slidesData.map((item, index)=>{
         return <button key={item.id}
-                       className={`${classes.screenshots__slider__switchers__item} ${item.id === centralSlideId && classes.screenshots__slider__switchers__itemActive}`}
+                       className={`${classes.screenshots__slider__switchers__item} ${(item.id === centralSlideId) && (classes.screenshots__slider__switchers__itemActive)}`}
                        disabled={(animation || item.id === centralSlideId) && true}
                        onClick={()=>handleSwitcher(index)}
         >

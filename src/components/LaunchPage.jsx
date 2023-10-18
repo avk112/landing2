@@ -19,7 +19,7 @@ const LaunchPage = () => {
                 <img
                     src={background}
                     alt="Two iPhone X"
-                    loading="lazy"
+                    // loading="lazy"
                     onLoad={handleLoading}
                     style={{display: !imgLoaded ? "none": "block"}}
                 />
