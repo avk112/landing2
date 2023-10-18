@@ -111,8 +111,10 @@
           height: 0.6rem;
         }
 
-        &:hover {
-          background: $mainColor;
+        @media screen and (min-device-width: $notepad){
+          &:hover {
+            background: $mainColor;
+          }
         }
       }
 
