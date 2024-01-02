@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import classes from "./DownloadPage.module.scss";
 import phoneImg from "../image/phone.png";
 import appleLogo from "../image/apple.png";
 import playmarketLogo from "../image/playmarket.png";
 
-const DownloadPage = () => {
+const DownloadPage: FC = () => {
     return (
         <div className={classes.download}>
             <div className={classes.download__imgBlock}>

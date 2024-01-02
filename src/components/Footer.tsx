@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject, FC} from 'react';
 import fbLogo from "../image/fb.png";
 import twitterLogo from "../image/twitter.png";
 import instLogo from "../image/instagram.png";
@@ -6,7 +6,10 @@ import pin from "../image/pin.png";
 import mail from "../image/mail.png";
 import support from "../image/support.png"
 
-const Footer = ({myRef=null}) => {
+interface FooterProps {
+    myRef:  RefObject<any>
+}
+const Footer: FC<FooterProps> = ({myRef=null}) => {
     return (
         <div id="contact" className="footer" ref={myRef}>
             <div className="footer__top">

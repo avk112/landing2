@@ -1,4 +1,4 @@
-export default [
+const slidesData =  [
     {
         id: 1,
         img: require("../image/screen1.jpg"),
@@ -29,3 +29,5 @@ export default [
         img: require("../image/screen2.jpg"),
     },
 ]
+
+export default slidesData

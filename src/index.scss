@@ -11,6 +11,10 @@ html, body {
   line-height: 1.2;
   scroll-behavior: smooth;
 
+  //@media screen and (min-device-width: $bigScreen){
+  //  font-size: 16px;
+  //}
+
   @media screen and (max-device-width: $notepad){
     font-size: 1.3vw;
   }
@@ -35,7 +39,7 @@ a {
   color: inherit;
   margin: 0;
   padding: 0;
-  line-height: 1em;
+  line-height: 1;
 }
 
 ul {

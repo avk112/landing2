@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import classes from "./CreateAccountPage.module.scss";
 import listData from "../data/createAccountList";
 import background from "../image/iphonex-full.png";
 import backgroundSmall from "../image/iphonex-full-small.png";
 
-const CreateAccountPage = () => {
-    const [isLoaded, setIsLoaded] = useState(false);
+const CreateAccountPage: FC = () => {
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
     const handleLoading = ()=> {
         return setIsLoaded(true);

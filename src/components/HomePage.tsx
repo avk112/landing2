@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {FC,  RefObject} from 'react';
 import classes from "./HomePage.module.scss";
 import phone from "../image/iphonex.png";
 import clientLogos from "../image/client-logos.png";
 
-const HomePage = ({myRef=null, watchRef}) => {
+interface HomePageProps {
+    myRef:  RefObject<any>
+    watchRef:  RefObject<any>
+}
+const HomePage: FC<HomePageProps> = ({myRef=null, watchRef=null}) => {
     return (
         <div  className={classes.home} ref={myRef}>
             <div className={classes.home__topBlock}>

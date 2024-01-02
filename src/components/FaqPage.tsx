@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import classes from "./FaqPage.module.scss";
 import faqData from "../data/faq";
 
-const FaqPage = () => {
+const FaqPage: FC = () => {
     const questionsBlock = faqData.map(item=> {
         const {id, title, text} = item;
         return <div key={id} className={classes.faq__questions__item}>

@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import classes from "./OrderForm.module.scss";
 
 const OrderForm = () => {
-    const [input, setInput] = useState("");
-    const [confirmed, setConfirmed] = useState(false);
+    const [input, setInput] = useState<string>("");
+    const [confirmed, setConfirmed] = useState<boolean>(false);
 
-    const handleInput = (e)=> {
+    const handleInput = (e: ChangeEvent<HTMLInputElement>)=> {
         const value = e.target.value;
         setInput(value);
     };

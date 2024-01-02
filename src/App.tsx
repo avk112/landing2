@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, FC,  RefObject} from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
@@ -13,9 +13,12 @@ import UpgradePage from "./components/UpgradePage";
 import FaqPage from "./components/FaqPage";
 import DownloadPage from "./components/DownloadPage";
 
-const App = ()=> {
-    const myRef = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null),];
-    const watchRef = useRef(null);
+interface AppProps {
+
+}
+const App: FC<AppProps> = ()=> {
+    const myRef:  RefObject<any>[] = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null),];
+    const watchRef:  RefObject<any> = useRef(null);
 
   return (
       <div className="app">

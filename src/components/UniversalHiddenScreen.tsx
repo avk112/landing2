@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {FC} from 'react';
 import classes from "./UniversalHiddenScreen.module.scss";
 
-const UniversalHiddenScreen = ({visible=false, handleVisibility=()=>{}, contentBlock=""}) => {
+interface UniversalHiddenScreenProps {
+    visible: boolean
+    handleVisibility: Function
+    contentBlock: any
+}
+const UniversalHiddenScreen: FC<UniversalHiddenScreenProps> = ({visible=false, handleVisibility=()=>{}, contentBlock=""}) => {
 
 
     return (
@@ -10,7 +15,7 @@ const UniversalHiddenScreen = ({visible=false, handleVisibility=()=>{}, contentB
 
         >
             <div className={classes.hidden__background}
-                 onClick={handleVisibility}>
+                 onClick={()=>handleVisibility()}>
             </div>
             <>
                 {contentBlock}

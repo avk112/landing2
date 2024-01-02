@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import classes from "./UniversalInfoBlock.module.scss";
 
-const UniversalInfoBlock = ({img, alt, title, text}) => {
+interface UniversalInfoBlockProps {
+    img: any
+    alt: string
+    title: string 
+    text: string
+}
+const UniversalInfoBlock: FC<UniversalInfoBlockProps> = ({img, alt, title, text}) => {
     return (
             <div className={classes.universalInfo}>
                 <div className={classes.universalInfo__imgBlock}>

@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import classes from "./DiscoverPage.module.scss";
 import phone from "../image/phone.png";
 import background from "../image/perspective.png";
 import backgroundSmall from "../image/perspective-small.png"
 import UniversalInfoBlock from "./UniversalInfoBlock";
 
-const DiscoverPage = () => {
-    const [imgLoaded, setImgLoaded] = useState(false);
+const DiscoverPage: FC = () => {
+    const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
     const handleLoading = ()=> {
         setImgLoaded(true);

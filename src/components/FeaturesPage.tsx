@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { RefObject, FC} from 'react';
 import classes from "./FeaturesPage.module.scss";
 import cards from "../data/featuresCards";
 
-const FeaturesPage = ({myRef=null}) => {
+interface FeaturesPageProps {
+    myRef:  RefObject<any>
+}
+const FeaturesPage: FC<FeaturesPageProps> = ({myRef=null}) => {
 
     const cardsBlock = cards.map(item=>{
         const {id, title, text, img, alt} = item;

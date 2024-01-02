@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, TouchEvent, FC} from 'react';
 import classes from "./WhatClientsSayPage.module.scss";
 import leftArrow from "../image/left-arrow.png";
 import rightArrow from "../image/right-arrow.png";
 import slidesData from "../data/clientsSaySlides";
 
-const WhatClientSayPage = () => {
-    const [position, setPosition] = useState(0);
-    const [coordX, setCoordX] = useState("");
+const WhatClientSayPage: FC = () => {
+    const [position, setPosition] = useState<number>(0);
+    const [coordX, setCoordX] = useState<number>(0);
 
     const handleSlider = (toLeft = true)=> {
         const direction = toLeft ? -100 : 100;
         setPosition(prev=>prev+direction);
     };
 
-    const handleSwiping = (e)=> {
+    const handleSwiping = (e: TouchEvent)=> {
         const newCoordX = e.changedTouches[0].clientX;
         if(e.type === "touchstart"){
             setCoordX(newCoordX);
@@ -53,14 +53,14 @@ const WhatClientSayPage = () => {
 
             <div className={classes.client__slider}>
                 <button className={classes.client__slider__arrow}
-                        onClick={handleSlider}
+                        onClick={()=>handleSlider()}
                         disabled={position <= -100*(slidesData.length-1)}
                 >
                     <img src={leftArrow} alt="left arrow"/>
                 </button>
                 <div className={classes.client__slider__central}
-                     onTouchStart={handleSwiping}
-                     onTouchEnd={handleSwiping}
+                     onTouchStart={(e)=>handleSwiping(e)}
+                     onTouchEnd={(e)=>handleSwiping(e)}
                 >
                     <div className={classes.client__slider__central__stripe}
                          style={{left: `${position}%`}}

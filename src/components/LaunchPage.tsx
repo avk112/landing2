@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import classes from "./LaunchPageArea.module.scss";
 import UniversalInfoBlock from "./UniversalInfoBlock";
 import rocket from "../image/rocket.png";
 import background from "../image/dualphone.png";
 import backgroundSmall from "../image/dualphone-small.png";
 
-const LaunchPage = () => {
-    const [imgLoaded, setImgLoaded] = useState(false);
+const LaunchPage: FC = () => {
+    const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
     const handleLoading = ()=> {
         setImgLoaded(true);

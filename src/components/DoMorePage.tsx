@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import classes from "./DoMorePage.module.scss";
 import tableData from "../data/doMoreTable";
 import img from "../image/graphic.png";
 
-const DoMorePage = () => {
-    const [itemToShow, setItemToShow] = useState(tableData[0]);
-    const [appearance,setAppearance] = useState(false);
+const DoMorePage: FC = () => {
+    const [itemToShow, setItemToShow] = useState<any>(tableData[0]);
+    const [appearance,setAppearance] = useState<boolean>(false);
 
 
-    const handleItem = (id=1)=>{
+    const handleItem = (id:number=1)=>{
         if(id !== itemToShow.id){
             const newId = Number(id);
             const newItem = tableData.find(item=> item.id === newId);

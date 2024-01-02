@@ -1,15 +1,17 @@
-import React, {useState} from 'react';
+import React, { RefObject, FC, useState, MouseEvent, TouchEvent} from 'react';
 import classes from "./ScreenshotsPage.module.scss";
 import slidesData from "../data/screenshotsSlides";
 import leftArrow from "../image/left-arrow.png";
 import rightArrow from "../image/right-arrow.png";
 
-
-const ScreenshotsPage = ({myRef=null}) => {
-    const absPosition=36.7;
-    const stripeLength = 5;
-    const mainSlidesCount = 3;
-    const centralSlideIndex = Math.trunc(stripeLength/2);
+interface ScreenshotsPageProps {
+    myRef:  RefObject<any>
+}
+const ScreenshotsPage: FC<ScreenshotsPageProps> = ({myRef=null}) => {
+    const absPosition:number=36.7;
+    const stripeLength:number = 5;
+    const mainSlidesCount:number = 3;
+    const centralSlideIndex:number = Math.trunc(stripeLength/2);
     const createSlidesArr = ()=>{
         const arr = [];
         for(let i=-1; i<stripeLength-1; i++){
@@ -20,20 +22,22 @@ const ScreenshotsPage = ({myRef=null}) => {
     };
 
     const [slides, setSlides] = useState(createSlidesArr);
-    const [animation, setAnimation] = useState(undefined);
+    const [animation, setAnimation] = useState<string | undefined>(undefined);
     const [swipeData, setSwipeData] = useState({coordX:0, timeStamp:0, mouseDown:false});
-    const [stripePosition, setStripePosition] = useState(0);
-    const [slideToAnimateId, setSlideToAnimateId] = useState();
-    const [centralSlideId, setCentralSlideId] = useState(slides[centralSlideIndex].id);
+    const [stripePosition, setStripePosition] = useState<number>(0);
+    const [slideToAnimateId, setSlideToAnimateId] = useState<number>();
+    const [centralSlideId, setCentralSlideId] = useState<number>(slides[centralSlideIndex].id);
 
 
-    const insertNewSlides = (slidesArr, fromStart = true, additionalSlides=1)=> {
+    const insertNewSlides = (slidesArr:any[], fromStart = true, additionalSlides=1)=> {
         const newSlidesArr = [...slidesArr];
         if(fromStart){
             for(let i=0; i<additionalSlides; i++) {
                 const multiplier = i+2;
                 const firstSlide = newSlidesArr[0];
-                const indexOfFirstSlide = slidesData.indexOf(slidesData.find(item => item.id === firstSlide.id));
+                const indexOfFirstSlide:number = firstSlide
+                    ? slidesData.findIndex((item) => item.id === firstSlide.id)
+                    : -1;
                 const slideToAdd = indexOfFirstSlide === 0 ? slidesData[slidesData.length - 1] : slidesData[indexOfFirstSlide - 1];
                 newSlidesArr.unshift({...slideToAdd, position: -absPosition * multiplier});
             }
@@ -43,7 +47,9 @@ const ScreenshotsPage = ({myRef=null}) => {
             for(let i=0; i<additionalSlides; i++){
                 const multiplier = newSlidesArr.length-1;
                 const lastSlide = newSlidesArr[newSlidesArr.length - 1];
-                const indexOfLastSlide = slidesData.indexOf(slidesData.find(item => item.id === lastSlide.id));
+                const indexOfLastSlide:number = lastSlide
+                    ? slidesData.findIndex((item) => item.id === lastSlide.id)
+                    : -1;
                 const slideToAdd = indexOfLastSlide === slidesData.length - 1 ? slidesData[0] : slidesData[indexOfLastSlide + 1];
                 newSlidesArr.push({...slideToAdd, position:  absPosition * multiplier});
             }
@@ -52,11 +58,11 @@ const ScreenshotsPage = ({myRef=null}) => {
         return newSlidesArr;
     };
 
-    const prepareNewSlides = (slidesArr=[], moveLeft=true, cut=1, additionalSlides=1, indexOfSwitchSlide)=> {
+    const prepareNewSlides = (slidesArr:any[]=[], moveLeft:boolean=true, cut:number=1, additionalSlides: number=1, indexOfSwitchSlide:number=0)=> {
         let newSlidesArr = [...slidesArr];
 
         if(additionalSlides>1){
-            const zeroOrLast = moveLeft ? slidesArr.length-1 : 0;
+            const zeroOrLast:number = moveLeft ? slidesArr.length-1 : 0;
             const position =  slidesArr[zeroOrLast].position;
             const indexOfSlideToInsert = moveLeft ? indexOfSwitchSlide-1 : indexOfSwitchSlide+1;
             const slideToInsert = {...slidesData[indexOfSlideToInsert]};
@@ -88,7 +94,7 @@ const ScreenshotsPage = ({myRef=null}) => {
 
 
 
-    const handleSlides = (indexOfSwitchSlide, moveLeft = true, gap=0,)=> {
+    const handleSlides = (indexOfSwitchSlide:number, moveLeft:boolean = true, gap:number=0,)=> {
         if(!animation) {
             let direction = moveLeft ? "moveLeft" : "moveRight";
             const offset = moveLeft ? -absPosition : absPosition;
@@ -133,10 +139,10 @@ const ScreenshotsPage = ({myRef=null}) => {
         }
     };
 
-    const handleSwitcher = (slideIndex)=> {
+    const handleSwitcher = (slideIndex:number)=> {
         if(!animation){
             const currentSlide = slides[centralSlideIndex];
-            const indexOfCurrentSlide = slidesData.indexOf(slidesData.find(item=>item.id===currentSlide.id));
+            const indexOfCurrentSlide:number = currentSlide ? slidesData.findIndex((item)=>item.id === currentSlide.id) : -1;
             const difference = slideIndex-indexOfCurrentSlide;
             const lastIndex = slidesData.length-1;
             const gap = Math.abs(difference) === lastIndex ? 0 : Math.abs(difference)-1;
@@ -147,9 +153,9 @@ const ScreenshotsPage = ({myRef=null}) => {
     }
 
 
-    const handleDrag = (e)=> {
+    const handleDrag = (e: MouseEvent | TouchEvent)=> {
         if(!animation) {
-            const coordX = e.type.includes("mouse") ? e.clientX : e.changedTouches[0].clientX;
+            const coordX = e.type.includes("mouse") ?  (e as MouseEvent).clientX : (e as TouchEvent).changedTouches[0].clientX;
 
             if (e.type === "mousedown" || e.type === "touchstart") {
                 setSwipeData({coordX: coordX, timeStamp: e.timeStamp, mouseDown: true});
@@ -163,7 +169,7 @@ const ScreenshotsPage = ({myRef=null}) => {
                 setSwipeData(prev => ({...prev, mouseDown: false}));
                 if (coordX !== swipeData.coordX) {
                     const leftDirection = coordX <= swipeData.coordX;
-                    handleSlides(false, leftDirection);
+                    handleSlides(-1, leftDirection);
                 }
             }
         }
@@ -195,7 +201,7 @@ const ScreenshotsPage = ({myRef=null}) => {
     const switchersBlock = slidesData.map((item, index)=>{
         return <button key={item.id}
                        className={`${classes.screenshots__slider__switchers__item} ${(item.id === centralSlideId) ? classes.screenshots__slider__switchers__itemActive : undefined}`}
-                       disabled={(animation || item.id === centralSlideId) && true}
+                       disabled={(animation || item.id === centralSlideId) ? true : false}
                        onClick={()=>handleSwitcher(index)}
         >
         </button>
@@ -223,12 +229,12 @@ const ScreenshotsPage = ({myRef=null}) => {
                     {slidesBlock}
                 </div>
                 <button className={classes.screenshots__slider__leftBtn}
-                        onClick={()=>handleSlides(false)}
+                        onClick={()=>handleSlides(-1)}
                 >
                     <img src={leftArrow} alt="left arrow"/>
                 </button>
                 <button className={classes.screenshots__slider__rightBtn}
-                        onClick={()=>handleSlides(false, false)}
+                        onClick={()=>handleSlides(-1, false)}
                 >
                     <img src={rightArrow} alt="right arrow"/>
                 </button>

@@ -1,15 +1,18 @@
-import React, {useState} from 'react';
+import React, { RefObject, FC, useState} from 'react';
 import classes from "./UpgradePage.module.scss";
 import plansData from "../data/upgradePlans";
 import UniversalHiddenScreen from "./UniversalHiddenScreen";
 import OrderForm from "./OrderForm";
 
-const UpgradePage = ({myRef=null}) => {
-    const [clickedPlan, setClickedPlan] = useState(2);
-    const [visibleBackground, setVisibleBackground] = useState(false);
+interface UpgradePageProps {
+    myRef:  RefObject<any>
+}
+const UpgradePage: FC<UpgradePageProps> = ({myRef=null}) => {
+    const [clickedPlan, setClickedPlan] = useState<number>(2);
+    const [visibleBackground, setVisibleBackground] = useState<boolean>(false);
 
 
-    const handleClick = (planId=1)=> {
+    const handleClick = (planId:number=1)=> {
         setClickedPlan(planId);
     };
 
